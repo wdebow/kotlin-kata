@@ -1,0 +1,16 @@
+.idea
+*.ipr
+*.iws
+*.iml
+.DS_Store
+
+build
+out
+.gradle
+gradlew.bat
+elastic-apm-agent.jar
+
+node_modules
+src/test/e2e/cypress/videos/*
+src/test/e2e/cypress/screenshots/*
+local-run.log
