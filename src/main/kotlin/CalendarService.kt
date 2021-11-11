@@ -24,7 +24,45 @@ class CalendarService {
         return newValue;
     }
 
-    //fun calculateRefactor(date: Calendar?) =
+    fun calculateRefactor(date: Calendar?): Calendar {
+        val myDate = date?.apply {
+            add(Calendar.YEAR, 1)
+            add(Calendar.MONTH, 2)
+            add(Calendar.DATE, 3)
+        } ?: run {
+            println("creating new date")
+            Calendar.getInstance()
+        }
+
+        with(myDate) {
+            println(get(Calendar.DAY_OF_WEEK))
+            println(get(Calendar.DAY_OF_MONTH))
+            println(get(Calendar.DAY_OF_YEAR))
+        }
+        return calculateExternal(myDate).also {
+            println("final value was$it")
+        }
+    }
+
+    fun calculateRefactorCondensed(date: Calendar?): Calendar =
+        with(
+            date?.apply {
+                add(Calendar.YEAR, 1)
+                add(Calendar.MONTH, 2)
+                add(Calendar.DATE, 3)
+            } ?: run {
+                println("creating new date")
+                Calendar.getInstance()
+            }
+        ) {
+            println(get(Calendar.DAY_OF_WEEK))
+            println(get(Calendar.DAY_OF_MONTH))
+            println(get(Calendar.DAY_OF_YEAR))
+            calculateExternal(this)
+        }.also {
+            println("final value was$it")
+        }
+
 
     private fun calculateExternal(date: Calendar): Calendar {
         val c = Calendar.getInstance()
